@@ -26,11 +26,9 @@ class ListNode(object):
         node = head
         output = []
         while node != None:
-            rvrs = ListNode(node.val)
             output.append(node.val)
             node = node.next
-        return(output)
-
+        return output
     # Recursive Solution      
     def reverseRecursively(self, head):
         # Implement this.
