@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-## TechLead daily question Jun 12, 2021
+## TechLead daily question Jun 15, 2021
 ##
 ## Given a list of numbers, where every number shows up twice except for one number, find that one number.
 ## Challenge: Find a way to do this using O(1) memory.
