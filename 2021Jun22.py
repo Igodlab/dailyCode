@@ -25,19 +25,19 @@ def distance(s1, s2):
     # If last characters of two strings are same, nothing
     # much to do. Ignore last characters and get count for
     # remaining strings.
-    if s1[m-1] == s2[n-1]:
-        return distance(s1[:-1], s2[:-1])
+    if s1[0] == s2[0]:
+        return distance(s1[1:], s2[1:])
  
     # If last characters are not same, consider all three
     # operations on last character of first string, recursively
     # compute minimum cost for all three operations and take
     # minimum of three values.
-    return 1 + min(distance(s1, s2[:-1]),     # Insert
-                   distance(s1[:-1], s2),     # Remove
-                   distance(s1[:-1], s2[:-1]) # Replace
+    return 1 + min(distance(s1, s2[1:]),     # Insert
+                   distance(s1[1:], s2),     # Remove
+                   distance(s1[1:], s2[1:])  # Replace
                    )
 
             
-print(distance('biting', 'sitting'))
+print(distance('biting', 's'))
 # 2
 
