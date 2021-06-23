@@ -4,7 +4,6 @@
 -- Input: - ( 3 + ( 2 - 1 ) )
 -- Output: -4
 --
---
 -- we have run:
 -- $ cabal install hint
 -- 
