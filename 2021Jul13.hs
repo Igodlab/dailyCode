@@ -1,13 +1,10 @@
 -- Given a sorted list of numbers, change it into a balanced binary search tree. You can assume there will be no duplicate numbers in the list.
 
-data Tree a = Empty | Node Integer (Tree a) a (Tree a) deriving (Show, Eq)
+data Tree a = Empty | Node a (Tree a) (Tree a) deriving (Show, Eq)
 
 createBalancedBS :: [a] -> Tree a
 createBalancedBS [] = Empty
-createBalancedBS x = Node height 
-            (createBalancedBS $ take half x) 
-        (x !! half)
-            (createBalancedBS $ drop (half + 1) x)
+createBalancedBS x = Node (x !! half) (createBalancedBS $ take half x) (createBalancedBS $ drop (half + 1) x)
         where 
             len = length x
             half = len `div` 2
