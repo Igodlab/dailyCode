@@ -3,7 +3,7 @@
 -- Here's a starting point:
 -- 
 
-data Tree a = Empty | Node a (Tree a) (Tree a) deriving (Show, Eq, Read, Ord)
+data Tree a = Empty | Node a (Tree a) (Tree a) deriving (Show, Read)
 
 -- create the Tree
 
