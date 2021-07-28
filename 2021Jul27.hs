@@ -19,11 +19,11 @@ isBst t = lft t && rgt t
   where
     lft (Node x left _) = case left of
         Empty         -> True
-        (Node xs _ _) -> if x < xs then False else is_bst left
+        (Node xs _ _) -> if x < xs then False else isBst left
       
     rgt (Node x _ right) = case right of
         Empty         -> True
-        (Node xs _ _) -> if x > xs then False else is_bst right
+        (Node xs _ _) -> if x > xs then False else isBst right
 
 
 tree1 = Node 5 (Node 6 (Node 2 Empty Empty) Empty) (Node 7 (Node 4 Empty Empty) (Node 9 Empty Empty))
