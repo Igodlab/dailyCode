@@ -10,9 +10,12 @@
 -- Input: [1, 2, 3, 2, 3, 5, 1]
 -- Output: [1, 2, 3, 1, 2, 3, 1]
 
-getBonuses :: (Ord a, Num a) => [a] -> [a]
-getBonuses [] = []
-getBonuses p = p <> [1,2,3]
-    
+getBonuses :: [Int] -> [Int]
+getBonuses xs = 
+    let xRight = zipWith (\m n -> if m > n then 1 else 0) xs (tail xs ++ [maxBound :: Int])
+        xLeft  = zipWith (\m n -> if m > n then 1 else 0) xs ([maxBound :: Int] ++ init xs)
+        ones   = replicate (length xs) 1
+    in zipWith (+) ones $ zipWith (+) xLeft xRight
+
 
 performance = [1, 2, 3, 2, 3, 5, 1]
