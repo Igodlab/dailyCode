@@ -10,22 +10,25 @@
 -- Here's some starter code:
 -- 
 
-isomporphicMap :: (Eq a) => [a] -> [a] -> [(a, a)]
+isomporphicMap :: (Eq a) => [a] -> [a] -> Bool
 isomporphicMap x y = one2one $ zip x y
   where
-    one2one :: (Eq a) => [(a, a)] -> [(a, a)]
-    one2one (z:[]) = []
-    one2one (x:xs)
-        | and $ map (\z -> if z /= snd x then True else False) (map snd $ filterFst (fst x) xs) = xs
-        | otherwise = one2one xs
+    one2one :: (Eq a) => [(a, a)] -> Bool
+    one2one (z:[]) = True
+    one2one (x:xs) = case (filterSnd (snd x) $ filterFst (fst x) xs) ++ 
+                          (filterSnd (fst x) $ filterFst (snd x) xs) of
+        (z:_) -> False
+        []    -> one2one xs
       where 
-        flipTuple :: (a, a) -> (a, a)
-        flipTuple (m, n) = (n, m)
-
         filterFst :: (Eq a) => a -> [(a, a)] -> [(a, a)]
         filterFst _ [] = []
         filterFst x xs = filter (\z -> fst z == x) xs
 
+        filterSnd :: (Eq a) => a -> [(a, a)] -> [(a, a)]
+        filterSnd _ [] = []
+        filterSnd x xs = filter (\z -> snd z /= x) xs
+
+--
 --
 -- [(x, y)]  in  [(x, y), (y, x), ..., (m, n)]    then True
 --               [(x, z), (z, x), (y, z), (z, y)] then False
