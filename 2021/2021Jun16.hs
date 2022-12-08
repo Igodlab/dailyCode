@@ -13,7 +13,7 @@
 {-
 check :: (Num a, Ord a) => [a] -> Bool
 check x
-    | (True `elem` map (< 1) x) = error "Values in list have to be greater than 1"
+    | True `elem` map (< 1) x = error "Values in list have to be greater than 1"
     | otherwise = case f of
         []     -> True
         (x:[]) -> True
@@ -23,8 +23,8 @@ check x
             | filter 
 -}
 
-check :: (Ord a) => [a] -> [a]
-check [] = []
-check (x:xs)
-    | sum([1 | i <- xs, i>x]) > 1 = x:check xs
-    | otherwise = check xs
+ascending :: (Ord a) => [a] -> [a]
+ascending [] = []
+ascending (x:xs) = case ascending $ filter (> x) xs of
+    []     -> []:
+    (x:_)  -> x:ascending xs

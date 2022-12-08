@@ -11,8 +11,8 @@
 -- 
 -- Here's the function signature:
 
-word_search :: [[Char]] -> [Char] -> Bool
-word_search m w = do
+wordSearch :: [[Char]] -> [Char] -> Bool
+wordSearch m w = do
     let mT = transpose m
     let check | w `elem` mT = True
               | w `elem` m  = True

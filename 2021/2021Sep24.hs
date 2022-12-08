@@ -1,4 +1,3 @@
---
 -- Sep 24, 2021
 -- problem: Implement merge sorted algorithm
 --
@@ -18,5 +17,3 @@ mergeSorted x = merge (mergeSorted $ take half x) (mergeSorted $ drop half x)
 
 -- [2,5,2] [7,5,4]
 -- [2,2,4,5,5]
---
-

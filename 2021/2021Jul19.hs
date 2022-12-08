@@ -3,6 +3,8 @@
 -- Here's a starting point:
 -- 
 
+module BST.IsBST where
+
 data Tree a = Empty | Node a (Tree a) (Tree a) deriving (Show, Read)
 
 -- create the Tree

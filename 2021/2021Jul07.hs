@@ -7,7 +7,7 @@
 -- Here's a starting point:
 -- 
 
-maximum_product_of_three :: (Num a, Ord a) => [a] -> a
+maximum_product_of_three :: (Ord a) => [Integer] -> Integer
 maximum_product_of_three l = case l of
     []        -> error "list length has to be >= 3"
     (x:[])    -> error "list length has to be >= 3"
