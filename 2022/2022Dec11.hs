@@ -18,7 +18,8 @@ sortedSquaredArray xs = mergeSortArray $ map (^2) xs
     merge :: [Int] -> [Int] -> [Int]
     merge xs [] = xs
     merge [] ys = ys
-    merge (x:xs) (y:ys) | x >= y = merge (xs) (y:ys) ++ [x]
-                        | otherwise = merge (x:xs) (ys) ++ [y]
-
+    merge (x:xs) (y:ys) | x >= y = y : merge (x:xs) (ys)
+                        | otherwise = x : merge (xs) (y:ys)
+-- x >= y = x : merge (xs) (y:ys)
+-- otherwise = y : merge (x:xs) (ys)
 array = [1::Int, 2, 3, 4, 5, 6, 7, 8, 9]
