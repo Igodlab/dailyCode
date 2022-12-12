@@ -39,8 +39,9 @@ validateThreeNodes n1 n2 n3
     | otherwise        = False
 
 isAncestor :: BST Int -> BST Int -> Bool 
-isAncestor (Empty) _ = False
+isAncestor Empty _ = False
 isAncestor node@(Node n l r) targ@(Node n' l' r') 
     | node == targ = True
     | n > n'       = isAncestor l targ
     | otherwise    = isAncestor r targ
+
