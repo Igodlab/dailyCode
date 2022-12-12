@@ -8,18 +8,15 @@
 
 
 sortedSquaredArray :: [Int] -> [Int]
-sortedSquaredArray xs = mergeSortArray $ map (^2) xs
+sortedSquaredArray [x] = [x^2]
+sortedSquaredArray xs = let half = length xs `div` 2 
+                        in merge (sortedSquaredArray $ take half xs) (sortedSquaredArray $ drop half xs) 
   where
-    mergeSortArray :: [Int] -> [Int]
-    mergeSortArray [x] = [x]
-    mergeSortArray xs = let half = length xs `div` 2
-                        in merge (mergeSortArray $ take half xs) (mergeSortArray $ drop half xs) 
-
     merge :: [Int] -> [Int] -> [Int]
     merge xs [] = xs
     merge [] ys = ys
-    merge (x:xs) (y:ys) | x >= y = y : merge (x:xs) (ys)
-                        | otherwise = x : merge (xs) (y:ys)
+    merge (x:xs) (y:ys) | x^2 >= y^2 = y : merge (x:xs) ys
+                        | otherwise = x : merge xs (y:ys)
 -- x >= y = x : merge (xs) (y:ys)
 -- otherwise = y : merge (x:xs) (ys)
 array = [1::Int, 2, 3, 4, 5, 6, 7, 8, 9]

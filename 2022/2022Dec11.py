@@ -10,17 +10,13 @@
 
 def sortedSquaredArray(array):
     # Write your code here
-    sqrd = list(map(lambda xi: xi**2, array))
-    return mergeSortArray(sqrd)
-
-def mergeSortArray(array):
     if len(array) <= 1:
-        return array
+        return [array[0]**2]
     else:
         half = len(array) // 2
         x = array[:half]
         y = array[half:]
-        return merge(mergeSortArray(x), mergeSortArray(y))
+        return merge(sortedSquaredArray(x), sortedSquaredArray(y))
 
 def merge(x, y):
     if len(x) == 0:
@@ -33,7 +29,7 @@ def merge(x, y):
     y0 = y[0]
     ys = y[1:]
     
-    if x0 >= y0:
+    if x0**2 >= y0**2:
         return [y0] + merge(x, ys)
     else:
         return [x0] + merge(xs, y)
