@@ -1,4 +1,4 @@
-module Dec07_2022 where
+module SumTwo where
 
 -- Write a function that takes in a non-empty array of distinct integers and an integer representing a target sum. If any two numbers in the input array sum up to the target sum, the function should return them in an array, in order. If not two numbers sum up to the target sum, the function should return an empty array.
 -- 
@@ -7,10 +7,6 @@ module Dec07_2022 where
 -- You can assume that there will be at most one pair of numbers summing up to the target sum.
 -- 
 
-import Control.Applicative (liftA2)
-
-
--- sophisticated solution using liftA2 
 sumFunction :: [Int] -> Int -> Either [Int] [Int]
 sumFunction [] _ = Left []
 sumFunction xs n = case filtered (allCombinations [] xs) of
@@ -27,8 +23,3 @@ sumFunction xs n = case filtered (allCombinations [] xs) of
 
     filtered :: [(Int, Int)] -> [(Int, Int)]
     filtered ys = filter (\(p, q) -> p + q == n) ys
-    
--- try:
---
--- Prelude> sumFunction [5, -4, 8, 11, 1, -1, 6, 2, 14] 10
--- Right [-4,14]
